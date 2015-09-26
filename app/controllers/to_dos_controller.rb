@@ -39,7 +39,7 @@ class ToDosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.find(params[:id])
+    @todo = ToDo.find(params[:id])
     @todo.destroy
     head :ok, location: to_do_path(@todo)
   end
