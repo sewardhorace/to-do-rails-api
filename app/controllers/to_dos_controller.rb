@@ -13,6 +13,7 @@ class ToDosController < ApplicationController
   end
 
   def create
+    puts params
     @todo = ToDo.new(to_do_params)
     @todo.completed = false
     if @todo.save
