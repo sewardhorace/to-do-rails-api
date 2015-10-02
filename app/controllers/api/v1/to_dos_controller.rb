@@ -12,7 +12,7 @@ module Api
         @todo = ToDo.new(to_do_params)
         @todo.completed = false
         if @todo.save
-          head :created, location: to_do_path(@todo)
+          head :ok
         else
           head :bad_request
         end
@@ -22,7 +22,7 @@ module Api
         @todo = ToDo.find(params[:id])
 
         if @todo.update(to_do_params)
-          head :ok, location: to_do_path(@todo)
+          head :ok
         else
           head :bad_request
         end
@@ -31,7 +31,7 @@ module Api
       def destroy
         @todo = ToDo.find(params[:id])
         @todo.destroy
-        head :ok, location: to_do_path(@todo)
+        head :ok
       end
 
       private
