@@ -4,9 +4,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'to_dos#index'
 
-  resources :to_dos
+  namespace :api do
+    namespace :v1 do
+      get '/to_dos', to: 'to_dos#index'
+      post '/to_dos', to: 'to_dos#create'
+      delete '/to_dos/:id', to: 'to_dos#destroy'
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
